@@ -4,19 +4,27 @@ namespace ECommerce.API.DataAccess
 {
     public interface IDataAccess
     {
+        // Product Categories
         List<ProductCategory> GetProductCategories();
         ProductCategory GetProductCategory(int id);
+
+        // Product Categories Management
+        string ProductCategoryAdd(string category, string subCategory);
+
+        // Products
         Offer GetOffer(int id);
-        List<Product> GetProducts(string category, string subcategory, int count); 
+        List<Product> GetProducts(string category, string subcategory, int count);
         Product GetProduct(int id);
+        List<Product> PutProduct(int id, float price, int quantity);
 
-        List<Product> PutProduct(int id,float Price,int Quantity);
-
+        // Users
         bool InsertUser(User user);
-        string IsUserPresent(string email, string password);
+        User IsUserPresent(string email, string password);
+        User GetUser(int id);
+
         void InsertReview(Review review);
         List<Review> GetProductReviews(int productId);
-        User GetUser(int id);
+
         bool InsertCartItem(int userId, int productId);
         Cart GetActiveCartOfUser(int userid);
         Cart GetCart(int cartid);
@@ -25,6 +33,6 @@ namespace ECommerce.API.DataAccess
         int InsertPayment(Payment payment);
         int InsertOrder(Order order);
 
-        string ProductCategoryAdd( string Category, string SubCategory);
+
     }
 }

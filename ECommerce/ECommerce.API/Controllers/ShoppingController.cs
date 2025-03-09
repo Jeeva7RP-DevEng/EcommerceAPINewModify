@@ -84,9 +84,8 @@ namespace ECommerce.API.Controllers
         [HttpPost("LoginUser")]
         public IActionResult LoginUser([FromBody] User user)
         {
-            var token = dataAccess.IsUserPresent(user.Email, user.Password);
-            if (token == "") token = "invalid";
-            return Ok(token);
+           
+            return Ok();
         }
 
         [HttpPost("InsertReview")]
@@ -96,15 +95,15 @@ namespace ECommerce.API.Controllers
             dataAccess.InsertReview(review);
             return Ok("inserted");
         }
-       
 
 
-        [HttpGet("GetProductReviews/{productId}")]
-        public IActionResult GetProductReviews(int productId)
-        {
-            var result = dataAccess.GetProductReviews(productId);
-            return Ok(result);
-        }
+
+        //[HttpGet("GetProductReviews/{productId}")]
+        //public IActionResult GetProductReviews(int productId)
+        //{
+        //    var result = dataAccess.GetProductReviews(productId);
+        //    return Ok(result);
+        //}
 
         [HttpPost("InsertCartItem/{userid}/{productid}")]
         public IActionResult InsertCartItem(int userid, int productid)
@@ -150,6 +149,6 @@ namespace ECommerce.API.Controllers
             return Ok(id.ToString());
         }
 
-        
+
     }
 }
