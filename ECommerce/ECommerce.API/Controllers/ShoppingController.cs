@@ -84,19 +84,18 @@ namespace ECommerce.API.Controllers
         [HttpPost("LoginUser")]
         public IActionResult LoginUser([FromBody] User user)
         {
-            var token = dataAccess.IsUserPresent(user.Email, user.Password);
-            if (token == "") token = "invalid";
-            return Ok(token);
+           
+            return Ok();
         }
 
-        //[HttpPost("InsertReview")]
-        //public IActionResult InsertReview([FromBody] Review review)
-        //{
-        //    review.CreatedAt = DateTime.Now.ToString(DateFormat);
-        //    dataAccess.InsertReview(review);
-        //    return Ok("inserted");
-        //}
-       
+        [HttpPost("InsertReview")]
+        public IActionResult InsertReview([FromBody] Review review)
+        {
+            review.CreatedAt = DateTime.Now.ToString(DateFormat);
+            dataAccess.InsertReview(review);
+            return Ok("inserted");
+        }
+
 
 
         //[HttpGet("GetProductReviews/{productId}")]
@@ -106,50 +105,50 @@ namespace ECommerce.API.Controllers
         //    return Ok(result);
         //}
 
-        //[HttpPost("InsertCartItem/{userid}/{productid}")]
-        //public IActionResult InsertCartItem(int userid, int productid)
-        //{
-        //    var result = dataAccess.InsertCartItem(userid, productid);
-        //    return Ok(result ? "inserted" : "not inserted");
-        //}
+        [HttpPost("InsertCartItem/{userid}/{productid}")]
+        public IActionResult InsertCartItem(int userid, int productid)
+        {
+            var result = dataAccess.InsertCartItem(userid, productid);
+            return Ok(result ? "inserted" : "not inserted");
+        }
 
-        //[HttpGet("GetActiveCartOfUser/{id}")]
-        //public IActionResult GetActiveCartOfUser(int id)
-        //{
-        //    var result = dataAccess.GetActiveCartOfUser(id);
-        //    return Ok(result);
-        //}
+        [HttpGet("GetActiveCartOfUser/{id}")]
+        public IActionResult GetActiveCartOfUser(int id)
+        {
+            var result = dataAccess.GetActiveCartOfUser(id);
+            return Ok(result);
+        }
 
-        //[HttpGet("GetAllPreviousCartsOfUser/{id}")]
-        //public IActionResult GetAllPreviousCartsOfUser(int id)
-        //{
-        //    var result = dataAccess.GetAllPreviousCartsOfUser(id);
-        //    return Ok(result);
-        //}
+        [HttpGet("GetAllPreviousCartsOfUser/{id}")]
+        public IActionResult GetAllPreviousCartsOfUser(int id)
+        {
+            var result = dataAccess.GetAllPreviousCartsOfUser(id);
+            return Ok(result);
+        }
 
-        //[HttpGet("GetPaymentMethods")]
-        //public IActionResult GetPaymentMethods()
-        //{
-        //    var result = dataAccess.GetPaymentMethods();
-        //    return Ok(result);
-        //}
+        [HttpGet("GetPaymentMethods")]
+        public IActionResult GetPaymentMethods()
+        {
+            var result = dataAccess.GetPaymentMethods();
+            return Ok(result);
+        }
 
-        //[HttpPost("InsertPayment")]
-        //public IActionResult InsertPayment(Payment payment)
-        //{
-        //    payment.CreatedAt = DateTime.Now.ToString();
-        //    var id = dataAccess.InsertPayment(payment);
-        //    return Ok(id.ToString());
-        //}
+        [HttpPost("InsertPayment")]
+        public IActionResult InsertPayment(Payment payment)
+        {
+            payment.CreatedAt = DateTime.Now.ToString();
+            var id = dataAccess.InsertPayment(payment);
+            return Ok(id.ToString());
+        }
 
-        //[HttpPost("InsertOrder")]
-        //public IActionResult InsertOrder(Order order)
-        //{
-        //    order.CreatedAt = DateTime.Now.ToString();
-        //    var id = dataAccess.InsertOrder(order);
-        //    return Ok(id.ToString());
-        //}
+        [HttpPost("InsertOrder")]
+        public IActionResult InsertOrder(Order order)
+        {
+            order.CreatedAt = DateTime.Now.ToString();
+            var id = dataAccess.InsertOrder(order);
+            return Ok(id.ToString());
+        }
 
-        
+
     }
 }
