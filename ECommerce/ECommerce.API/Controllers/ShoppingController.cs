@@ -33,6 +33,8 @@ namespace ECommerce.API.Controllers
         }
 
 
+
+
         [HttpGet("GetProduct/{id}")]
         public IActionResult GetProduct(int id)
         {
